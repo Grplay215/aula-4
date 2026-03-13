@@ -41,7 +41,7 @@
 
 
 //criando objetos do tipo ARRAY
-const listadealunos   = [ 'jose', 'maria', 'luiz', 'antonio', 'carlos' ] // da pra colocar numeros ou booleanos dentro tbm
+const listadealunos   = [ 'jose', 'maria', 'luiz', 'antonio', 'carlos', ] // da pra colocar numeros ou booleanos dentro tbm
 const listadeclientes = []
 const listadefornecedores = []
 
@@ -113,7 +113,7 @@ const manipulardados = function(){
     listadeclientes[5] = 'anta da silva'
     listadeclientes[6] = 'thiago da silva'
 
-    console.log(listadeclientes)
+    console.table(listadeclientes)
 
     //permite add novos elementos no array, sempre no final
     listadefornecedores.push('antonio')
@@ -121,7 +121,230 @@ const manipulardados = function(){
     listadefornecedores.push('luiz')
     listadefornecedores.push('hugo', 'maria', 'andre')
 
-    console.log(listadefornecedores)
+    console.table(listadefornecedores)
+
+//permite add novos elementos no array, sempre no inicio
+//apos add o elemento, ele reorganiza todos os outros itens
+    listadefornecedores.unshift('luciano')
+    console.table(listadefornecedores)
+
+
+    //permite add novo elemento em uma determinada posição no array, e permite apagar um conteudo determinado no array
+    //splice(indice, quantidade de elementos, 'novo conteudo') para adicionar
+    //splice(indice, quantidade de elementos q deseja remover)
+    listadefornecedores.splice(3,0,'bernardo')
+    console.table(listadefornecedores)
+
+//permite remover o ultimo elento do array
+    listadefornecedores.pop()
+    console.table(listadefornecedores)
+
+
+    //permite remover o primeiro elemento do array
+    //apos ele remover, ira reorganizar todos os elementos
+    listadefornecedores.shift()
+    console.table(listadefornecedores)
+
+
 }
 
-exibirdados()
+function remove(nome) {
+    
+   // let contador = 0
+   // let qtd = listadealunos.length
+
+   // while(contador< qtd){
+  //      console.table(listadealunos)
+  //      console.log('-------------------------------------')
+
+   // if (nome == listadealunos[contador]) {
+  //      listadealunos.splice(contador,1)
+  //      console.table(listadealunos)
+  //  }
+  //  contador++
+ //   }
+
+
+
+
+ //--------------------------------------------------
+    //for(contador in listadealunos){
+   //     if (nome == listadealunos[contador]){
+   //         listadealunos.splice(contador,1)
+
+   //         console.table(listadealunos)
+   //     }
+  //  }
+    
+
+
+
+  //indexOF() -> retorna o indice referente ao conteudo q esta sendo pesquisado
+  listadealunos.splice(listadealunos.indexOf(nome), 1)
+  console.table(listadealunos)
+
+
+
+}
+
+
+const verificaritem = function (nome) {
+    //verifica se o conteudo existe dentro do array e retorna true ou false
+    return listadealunos.includes(nome)
+}
+
+
+
+const manipularDadosJSON = function () {
+    //criando um objeto JSON
+    //estrutura do JSON é chave (atributo) : valor(conteúdo)
+    let aluno = {"id":1, "nome":"jose da silva", "ra":1122879714, "email":"jose@gmail.com", "ativado": false}
+
+    console.table(aluno)
+
+    //exibe o conteudo de um atributo do JSON
+    console.log(aluno.nome)
+    console.log(aluno.email)
+
+    //adiciona um novo atributo ou substitui um atributo no JSON ja existente
+    aluno.telefone = '11 97116-8999'
+    aluno.data_nascimento ='01/12/2006'
+    console.log (aluno)
+
+    //remove um atributo do JSON
+    delete aluno.ativado
+    console.log (aluno)
+
+    aluno.ra = 123456789
+    console.log (aluno)
+
+    aluno.nota = null
+    console.log (aluno)
+}
+
+const cadastrodeprodutos = function () {
+    let cores = [
+                
+                    {"id":1, "cor":"branco",  "hexa":"#ffffff"},
+                    {"id":2, "cor":"preto",   "hexa":"#000000"},
+                    {"id":3, "cor":"azul",    "hexa":"#0000ff"},
+                    {"id":4, "cor":"amarelo", "hexa":"#ffff00"},
+                    {"id":5, "cor":"rosa",    "hexa":"#ffb5c0"}
+                 ]       
+
+                 console.log(cores)
+    let marcas = [
+                    {"id":1, "marca":"nvidia",   "telefone":"1 800-797-6530" ,   "email":"nvidia@gmail.com"},
+                    {"id":2, "marca":"intel",    "telefone":"1 800-545-6780" ,   "email":"intel@gmail.com"},
+                    {"id":3, "marca":"amd",      "telefone":"55 0800-444-1186" , "email":"corporate.pressinquiry@amd.com"},
+                    {"id":4, "marca":"mancer",   "telefone":"47 3305-5150" ,     "email":"rma@mancer.com.br"},
+                    {"id":5, "marca":"positivo", "telefone":"41 3316-7417" ,     "email":"positivo.alfa@positivo.com.br"},
+                    {"id":6, "marca":"lenovo",   "telefone":"0800-701-4815" ,    "email":" premier_br@lenovo.com."},
+                 ]            
+
+
+
+    let produtos = [
+                    {  "id":1,
+                       "nome":"monitor",
+                       "descricao":"monitor de 27 polegadas",
+                       "valor": 1500,
+                       "quantidade": 20,
+                       "cor": [
+                            cores[0].cor,
+                            cores[1].cor
+                       ],
+                       "marca": [
+                                marcas[1].marca
+                       ]
+                    },
+                    {  "id":2,
+                        "nome":"teclado",
+                        "descricao":"teclado magnetico rgb",
+                        "valor": 400,
+                        "quantidade": 500,
+                        "cor": cores,
+                        "marca": [
+                                 marcas[3].marca,
+                                 marcas[4].marca,
+                                 marcas[5].marca
+                        ]
+                     },
+                     {  "id":3,
+                        "nome":"mouse",
+                        "descricao":"mouse sem fio rgb",
+                        "valor": 90,
+                        "quantidade": 160,
+                        "cor": [
+                            cores[1].cor,
+                            cores[3].cor,
+                            cores[4].cor
+                       ],
+                        "marca": [
+                                 marcas[5].marca,
+                                 marcas[4].marca,
+                                 marcas[3].marca,
+                                 marcas[1].marca,
+                        ]
+                     },
+
+                  ]
+
+
+                  
+
+
+                 // console.log(produtos)
+                //  console.log('---------------------------------')
+                //  console.table(produtos)
+                //  console.log(produtos)
+                //  console.log('---------------------------------')
+                //  console.log(produtos[0].cor)
+                //  console.log('---------------------------------')
+                for(let contador =0; contador< 3; contador++)
+                    console.log(produtos[contador])
+
+                  console.log('\n---------------------------------\n') 
+                
+
+                produtos.forEach(function (produto) {
+                    console.log(`Produto: ${produto.nome}`)
+                    console.log(`Quantidade: ${produto.quantidade}`)
+                    console.log(`Valor: ${produto.valor}`)
+                    console.log(`Cor: `)
+
+                    produto.cor.forEach(function (corproduct){
+                        console.log(`   ${corproduct}`)
+                    })
+                    console.log(`Marca`)
+                    produto.marca.forEach(function (marcaproduto) {
+                        console.log(`  ${marcaproduto}`)
+                    })
+
+                    console.log(`\n--------------------------------\n`)
+
+                  })
+
+                
+                  
+//----------------------------------------------------------------------
+                  //exibindo todas as cores referentes ao produto monitor
+                 // ------------------------------------------------------
+                  
+
+                 //cores.forEach(function(itemcor){
+                    
+                //})
+                 
+}
+
+
+cadastrodeprodutos()
+//manipularDadosJSON()
+//remove('jose')
+//module.exports ={
+//remove,
+//listadealunos
+//}
+
+
