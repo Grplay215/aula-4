@@ -251,8 +251,8 @@ const cadastrodeprodutos = function () {
                        "valor": 1500,
                        "quantidade": 20,
                        "cor": [
-                            cores[0].cor,
-                            cores[1].cor
+                            cores[0],
+                            cores[1]
                        ],
                        "marca": [
                                 marcas[1].marca
@@ -276,9 +276,9 @@ const cadastrodeprodutos = function () {
                         "valor": 90,
                         "quantidade": 160,
                         "cor": [
-                            cores[1].cor,
-                            cores[3].cor,
-                            cores[4].cor
+                            cores[1],
+                            cores[3],
+                            cores[4]
                        ],
                         "marca": [
                                  marcas[5].marca,
@@ -291,7 +291,7 @@ const cadastrodeprodutos = function () {
                   ]
 
 
-                  
+                 
 
 
                  // console.log(produtos)
@@ -301,33 +301,87 @@ const cadastrodeprodutos = function () {
                 //  console.log('---------------------------------')
                 //  console.log(produtos[0].cor)
                 //  console.log('---------------------------------')
-                for(let contador =0; contador< 3; contador++)
-                    console.log(produtos[contador])
 
-                  console.log('\n---------------------------------\n') 
+
+                //permite extrair os produtos
+                produtos.forEach(function(itemproduto){
+                    console.log(`Produto: ${itemproduto.nome} `)
+
+                    //permite extrair as marcas de cada produto
+                    itemproduto.marca.forEach(function(itemMarca){
+                        console.log(`Marca: ${itemMarca}`)
+                    })
+
+                    //permite extrair as cores de cada produto
+                    itemproduto.cor.forEach(function(itemcor){
+                        console.log(`Cor: ${itemcor.cor}`)
+                    })
+                    console.log('\n-----------------------------------------------------------------------------\n')
+                })
+
+                //filtrando produtos pelo nome
+                console.log("Exemplo de como pesquisar um produto pelo nome")
+
+                var nomeproduto = 'monitor'
+                var corproduto = 'rosa'
+                produtos.forEach(function (itemproduto) {
+                //    if (String(nomeproduto) == String(itemproduto.nome)) {
+                //        console.log(itemproduto)
+                //    }  
+
+                //   
+                })
+
+
+                //filtarndo pela cor
+                console.log("Exemplo de como pesquisar um produto pelo nome")
+                produtos.forEach(function(itemproduto){
+                    itemproduto.cor.forEach(function(color){
+                    if (String(corproduto) == String(color.cor)) {
+                        console.log(itemproduto)
+                     }
+                     })
+                })
+
                 
 
-                produtos.forEach(function (produto) {
-                    console.log(`Produto: ${produto.nome}`)
-                    console.log(`Quantidade: ${produto.quantidade}`)
-                    console.log(`Valor: ${produto.valor}`)
-                    console.log(`Cor: `)
+               
 
-                    produto.cor.forEach(function (corproduct){
-                        console.log(`   ${corproduct}`)
-                    })
-                    console.log(`Marca`)
-                    produto.marca.forEach(function (marcaproduto) {
-                        console.log(`  ${marcaproduto}`)
-                    })
 
-                    console.log(`\n--------------------------------\n`)
 
-                  })
+
+
+
+            //    for(let contador =0; contador< 3; contador++)
+            //        console.log(produtos[contador])
+
+                //  console.log('\n---------------------------------\n') 
+                
+
+                //    produtos.forEach(function (produto) {
+             //       console.log(`Produto: ${produto.nome}`)
+             //       console.log(`Quantidade: ${produto.quantidade}`)
+             //       console.log(`Valor: ${produto.valor}`)
+             //       console.log(`Cor: `)
+
+             //       produto.cor.forEach(function (corproduct){
+             //           console.log(`   ${corproduct}`)
+             //      })
+             //       console.log(`Marca`)
+             //      produto.marca.forEach(function (marcaproduto) {
+             //           console.log(`  ${marcaproduto}`)
+             //       })
+
+            //        console.log(`\n--------------------------------\n`)
+
+                //  })
 
                 
                   
-//----------------------------------------------------------------------
+//-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+
                   //exibindo todas as cores referentes ao produto monitor
                  // ------------------------------------------------------
                   
